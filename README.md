@@ -19,7 +19,7 @@ In Figma heb ik:
 
 Omdat de opdracht vraagt om de styling te baseren op de NS-huisstijl, heb ik alvast kleuren gekozen die aansluiten bij de herkenbare blauw/geel combinatie van NS. Deze styling werk ik later verder uit in CSS.
 
-[📄 Bekijk het ontwerp](./docs/erfbelasting-ontwerp.pdf)
+[📥 Download het ontwerp (PDF)](erfbelasting-ontwerp.pdf)
 
 
 ## Doel van vandaag
