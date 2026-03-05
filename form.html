@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="styles/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <script src="/script/script.js" defer></script>
+    <link rel="icon" href="images/hva_icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erfbelasting form</title>
+</head>
+
+<body>
+    <header>
+        <p>Dit is een schoolproject. Dit is géén officieel formulier van de Belastingdienst. Vul geen echte
+            persoonsgegevens in.</p>
+        <img src="images/hva_icon.png" href="index.html" alt="HVA" />
+
+    </header>
+    <main>
+
+        <div class="styling">
+            <form>
+
+                <fieldset id="fase_1" class="stap">
+                    <legend>Gegevens van de overledene</legend>
+                    <label>
+                        Voorletter(s)
+                        <input type="text" placeholder="Voorletter" required>
+                    </label>
+
+                    <label>
+                        tussenvoegsel(s)<span class="hover">?</span>
+                        <input type="text" placeholder="Tussenvoegsel(s)">
+                    </label>
+
+
+                    <label>
+                        Achternaam
+                        <input type="text" placeholder="Achternaam" required>
+                    </label>
+
+                    <label>
+                        Bsn overledene
+                        <input type="text" inputmode="numeric" maxlength="9"
+                            placeholder="Zet hier de BNs van de overledene" id="bsn" required>
+                    </label>
+
+                    <fieldset class="datum">
+                        <legend>Overlijdensdatum</legend>
+                        <label for="dag">Dag
+                            <select id="dag" name="dates" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                        </label>
+                    </fieldset>
+
+                    <label>Maand
+                        <select id="maand" required>
+                            <option value="1">Januari</option>
+                            <option value="2">Februari</option>
+                            <option value="3">Maart</option>
+                            <option value="4">April</option>
+                            <option value="5">Mei</option>
+                            <option value="6">Juni</option>
+                            <option value="7">Juli</option>
+                            <option value="8">Augustus</option>
+                            <option value="9">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </label>
+                    <span>2025</span>
+                </fieldset>
+                </fieldset>
+
+
+                <fieldset id="fase_2" class="stap">
+                    <legend class="visually-hidden">Relatiestatus overledene</legend>
+                  
+                    <p>Was de overledene getrouwd...?</p>
+                    <label><input type="radio" name="partnerStatus" value="ja">Ja</label>
+                    <label><input type="radio" name="partnerStatus" value="nee">Nee</label>
+                  
+                    <fieldset id="vervolgFieldset" class="hidden">
+                      <p>Huwelijkse voorwaarden vastgelegd?</p>
+                      <label><input type="radio" name="voorwaarden" value="ja">Ja</label>
+                      <label><input type="radio" name="voorwaarden" value="nee">Nee</label>
+                    </fieldset>
+                  </fieldset>
+
+                <fieldset id="vervolgFieldset" class="hidden">
+                    <legend class="visually-hidden">Huwelijkse voorwaarden</legend>
+
+                    <p>Hadden de overledene en diens echtgenoot of geregistreerde partner huwelijkse of
+                        partnerschapsvoorwaarden laten vastleggen in een notariële akte?</p>
+
+                    <label>
+                        <input type="radio" name="voorwaarden" value="ja">
+                        Ja
+                    </label>
+
+                    <label>
+                        <input type="radio" name="voorwaarden" value="nee">
+                        Nee
+                    </label>
+                </fieldset>
+
+                <p>Hadden de overledene en diens partner een finaal verrekenbeding?</p>
+                <label>
+                    <input type="radio" name="erfenis" value="true">
+                    Ja
+                </label>
+
+                <label>
+                    <input type="radio" name="erfenis" value="false">
+                    nee
+                </label>
+
+                <p>Was de overledene getrouwd of had de
+                    overledene een geregistreerde partner op het moment van
+                    overlijden?</p>
+                <label>
+                    <input type="radio" name="erfenis" value="true">
+                    Ja
+                </label>
+
+                <label>
+                    <input type="radio" name="erfenis" value="false">
+                    nee
+                </label>
+
+                <label>
+                    Datum huwelijkse of partnerschapsvoorwaarden
+                    <input type="date">
+                </label>
+                <fieldset id="fase_3" class="stap">
+                <legend>Had de overledene kinderen?</legend>
+                <label>
+                    <input type="radio" name="erfenis" value="true">
+                    Ja
+                </label>
+
+                <label>
+                    <input type="radio" name="erfenis" value="false">
+                    nee
+                </label>
+
+                <p>Is 1 van deze kinderen eerder overleden dan de overledene voor wie u nu aangifte doet?</p>
+                <label>
+                    <input type="radio" name="erfenis" value="true">
+                    Ja
+                </label>
+
+                <label>
+                    <input type="radio" name="erfenis" value="false">
+                    nee
+                </label>
+
+                <p>Had dit overleden kind zelf kinderen?</p>
+                <label>
+                    <input type="radio" name="erfenis" value="true">
+                    Ja
+                </label>
+
+                <label>
+                    <input type="radio" name="erfenis" value="false">
+                    nee
+                </label>
+
+                <p>Had de overledene een testament?</p>
+                <label>
+                    <input type="radio" name="erfenis" value="true">
+                    Ja
+                </label>
+
+                <label>
+                    <input type="radio" name="erfenis" value="false">
+                    nee
+                </label>
+            </fieldset>
+
+                <fieldset id="fase_4" class="stap">
+                    <legend>Notaris</legend>
+                    <p>Protocolnummer notaris</p>
+                    <label>
+                        <input type="radio" name="erfenis" value="true">
+                        Ja
+                    </label>
+                    <p>Protocolnummer notaris</p>
+                    <label>
+                        Voorletter(s)
+                        <input type="text">
+                    </label>
+
+                    <label>
+                        tussenvoegsel
+                        <input type="text">
+                    </label>
+                    <label>
+                        Achternaam
+                        <input type="text">
+                    </label>
+
+                </fieldset>
+
+
+                <div id="stappen_button">
+                    <button type="button" id="vorige_stap">Vorige</button>
+                    <button type="button" id="volgende_stap">Volgende</button>
+                </div>
+
+
+            </form>
+        </div>
+
+
+    </main>
+
+    <footer>Let op: Het invullen van deze aangifte kost tijd. Zorg dat u voldoende tijd heeft en dat u alle benodigde
+        gegevens bij de hand heeft voordat u begint.</footer>
+
+</body>
+
+</html>
