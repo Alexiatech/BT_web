@@ -1,50 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="nl">
 <head>
-    <link href="styles/style.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <script src="/script/script.js" defer></script>
-    <link rel="icon" href="images/hva_icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erfbelasting form</title>
+    <title>Erfbelasting formulier</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="script/script.js" defer></script>
+    <link rel="icon" href="images/hva_icon.png">
 </head>
-
 <body>
+
     <header>
-        <p>Dit is een schoolproject. Dit is géén officieel formulier van de Belastingdienst. Vul geen echte
-            persoonsgegevens in.</p>
-        <img src="images/hva_icon.png" href="index.html" alt="HVA" />
+        <p>
+            Dit is een schoolproject. Dit is géén officieel formulier van de Belastingdienst.
+            Vul geen echte persoonsgegevens in.
+        </p>
 
+        <a href="index.html">
+            <img src="images/hva_icon.png" alt="Logo van de HvA">
+        </a>
     </header>
+
     <main>
+        <section class="styling">
+            <h1>Aangifte Erfbelasting 2025</h1>
 
-        <div class="styling">
             <form>
-
-                <fieldset id="fase_1" class="stap">
+                <!-- STAP 1 -->
+                <fieldset id="fase_1" class="stap is-active">
                     <legend>Gegevens van de overledene</legend>
-                    <label>
-                        Voorletter(s)
-                        <input type="text" placeholder="Voorletter" required>
-                    </label>
 
-                    <label>
-                        tussenvoegsel(s)<span class="hover">?</span>
-                        <input type="text" placeholder="Tussenvoegsel(s)">
-                    </label>
+                    <label for="voorletters">Voorletter(s)</label>
+                    <input type="text" id="voorletters" name="voorletters" placeholder="Bijvoorbeeld A.B." required>
 
+                    <label for="tussenvoegsel">Tussenvoegsel(s)</label>
+                    <input type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="Bijvoorbeeld van der">
 
-                    <label>
-                        Achternaam
-                        <input type="text" placeholder="Achternaam" required>
-                    </label>
+                    <label for="achternaam">Achternaam</label>
+                    <input type="text" id="achternaam" name="achternaam" placeholder="Achternaam" required>
 
-                    <label>
-                        Bsn overledene
-                        <input type="text" inputmode="numeric" maxlength="9"
-                            placeholder="Zet hier de BNs van de overledene" id="bsn" required>
-                    </label>
+                    <label for="bsn">BSN overledene</label>
+                    <input
+                        type="text"
+                        id="bsn"
+                        name="bsn"
+                        inputmode="numeric"
+                        maxlength="9"
+                        placeholder="Zet hier het BSN van de overledene"
+                        required
+                    >
 
                     <fieldset class="datum">
                         <legend>Overlijdensdatum</legend>
@@ -83,7 +87,7 @@
                                 <option value="31">31</option>
                             </select>
                         </label>
-                    </fieldset>
+                  
 
                     <label>Maand
                         <select id="maand" required>
@@ -106,151 +110,139 @@
                 </fieldset>
 
 
-                <fieldset id="fase_2" class="stap">
-                    <legend class="visually-hidden">Relatiestatus overledene</legend>
-                  
-                    <p>Was de overledene getrouwd...?</p>
-                    <label><input type="radio" name="partnerStatus" value="ja">Ja</label>
-                    <label><input type="radio" name="partnerStatus" value="nee">Nee</label>
-                  
-                    <fieldset id="vervolgFieldset" class="hidden">
-                      <p>Huwelijkse voorwaarden vastgelegd?</p>
-                      <label><input type="radio" name="voorwaarden" value="ja">Ja</label>
-                      <label><input type="radio" name="voorwaarden" value="nee">Nee</label>
-                    </fieldset>
-                  </fieldset>
+                 <!-- STAP 2 -->
+                 <fieldset id="fase_2" class="stap">
+                    <legend>Relatiestatus van de overledene</legend>
 
-                <fieldset id="vervolgFieldset" class="hidden">
-                    <legend class="visually-hidden">Huwelijkse voorwaarden</legend>
-
-                    <p>Hadden de overledene en diens echtgenoot of geregistreerde partner huwelijkse of
-                        partnerschapsvoorwaarden laten vastleggen in een notariële akte?</p>
-
+                    <p>Was de overledene getrouwd of had de overledene een geregistreerde partner?</p>
                     <label>
-                        <input type="radio" name="voorwaarden" value="ja">
+                        <input type="radio" name="partnerStatus" value="ja">
                         Ja
                     </label>
-
                     <label>
-                        <input type="radio" name="voorwaarden" value="nee">
+                        <input type="radio" name="partnerStatus" value="nee">
+                        Nee
+                    </label>
+
+                    <div id="voorwaarden-blok" class="hidden">
+                        <p>Waren huwelijkse of partnerschapsvoorwaarden vastgelegd in een notariële akte?</p>
+                        <label>
+                            <input type="radio" name="voorwaarden" value="ja">
+                            Ja
+                        </label>
+                        <label>
+                            <input type="radio" name="voorwaarden" value="nee">
+                            Nee
+                        </label>
+
+                        <div id="verrekenbeding-blok" class="hidden">
+                            <p>Hadden de overledene en diens partner een finaal verrekenbeding?</p>
+                            <label>
+                                <input type="radio" name="finaalVerrekenbeding" value="ja">
+                                Ja
+                            </label>
+                            <label>
+                                <input type="radio" name="finaalVerrekenbeding" value="nee">
+                                Nee
+                            </label>
+
+                            <label for="datum-voorwaarden">Datum huwelijkse of partnerschapsvoorwaarden</label>
+                            <input type="date" id="datum-voorwaarden" name="datumVoorwaarden">
+                        </div>
+                    </div>
+                </fieldset>
+
+                
+                <!-- STAP 3 -->
+                <fieldset id="fase_3" class="stap">
+                    <legend>Kinderen en testament</legend>
+
+                    <p>Had de overledene kinderen?</p>
+                    <label>
+                        <input type="radio" name="heeftKinderen" value="ja">
+                        Ja
+                    </label>
+                    <label>
+                        <input type="radio" name="heeftKinderen" value="nee">
+                        Nee
+                    </label>
+
+                    <div id="kinderen-blok" class="hidden">
+                        <p>Is 1 van deze kinderen eerder overleden dan de overledene voor wie u nu aangifte doet?</p>
+                        <label>
+                            <input type="radio" name="eerderOverledenKind" value="ja">
+                            Ja
+                        </label>
+                        <label>
+                            <input type="radio" name="eerderOverledenKind" value="nee">
+                            Nee
+                        </label>
+
+                        <div id="kleinkinderen-blok" class="hidden">
+                            <p>Had dit overleden kind zelf kinderen?</p>
+                            <label>
+                                <input type="radio" name="overledenKindHadKinderen" value="ja">
+                                Ja
+                            </label>
+                            <label>
+                                <input type="radio" name="overledenKindHadKinderen" value="nee">
+                                Nee
+                            </label>
+                        </div>
+                    </div>
+
+                    <p>Had de overledene een testament?</p>
+                    <label>
+                        <input type="radio" name="heeftTestament" value="ja">
+                        Ja
+                    </label>
+                    <label>
+                        <input type="radio" name="heeftTestament" value="nee">
                         Nee
                     </label>
                 </fieldset>
 
-                <p>Hadden de overledene en diens partner een finaal verrekenbeding?</p>
+            <!-- STAP 4 -->
+            <fieldset id="fase_4" class="stap">
+                <legend>Gegevens van de notaris</legend>
+
+                <p>Is er een notaris betrokken?</p>
                 <label>
-                    <input type="radio" name="erfenis" value="true">
+                    <input type="radio" name="heeftNotaris" value="ja">
                     Ja
                 </label>
-
                 <label>
-                    <input type="radio" name="erfenis" value="false">
-                    nee
+                    <input type="radio" name="heeftNotaris" value="nee">
+                    Nee
                 </label>
 
-                <p>Was de overledene getrouwd of had de
-                    overledene een geregistreerde partner op het moment van
-                    overlijden?</p>
-                <label>
-                    <input type="radio" name="erfenis" value="true">
-                    Ja
-                </label>
+                <div id="notaris-blok" class="hidden">
+                    <label for="protocolnummer">Protocolnummer notaris</label>
+                    <input type="text" id="protocolnummer" name="protocolnummer">
 
-                <label>
-                    <input type="radio" name="erfenis" value="false">
-                    nee
-                </label>
+                    <label for="notaris-voorletters">Voorletter(s)</label>
+                    <input type="text" id="notaris-voorletters" name="notarisVoorletters">
 
-                <label>
-                    Datum huwelijkse of partnerschapsvoorwaarden
-                    <input type="date">
-                </label>
-                <fieldset id="fase_3" class="stap">
-                <legend>Had de overledene kinderen?</legend>
-                <label>
-                    <input type="radio" name="erfenis" value="true">
-                    Ja
-                </label>
+                    <label for="notaris-tussenvoegsel">Tussenvoegsel</label>
+                    <input type="text" id="notaris-tussenvoegsel" name="notarisTussenvoegsel">
 
-                <label>
-                    <input type="radio" name="erfenis" value="false">
-                    nee
-                </label>
-
-                <p>Is 1 van deze kinderen eerder overleden dan de overledene voor wie u nu aangifte doet?</p>
-                <label>
-                    <input type="radio" name="erfenis" value="true">
-                    Ja
-                </label>
-
-                <label>
-                    <input type="radio" name="erfenis" value="false">
-                    nee
-                </label>
-
-                <p>Had dit overleden kind zelf kinderen?</p>
-                <label>
-                    <input type="radio" name="erfenis" value="true">
-                    Ja
-                </label>
-
-                <label>
-                    <input type="radio" name="erfenis" value="false">
-                    nee
-                </label>
-
-                <p>Had de overledene een testament?</p>
-                <label>
-                    <input type="radio" name="erfenis" value="true">
-                    Ja
-                </label>
-
-                <label>
-                    <input type="radio" name="erfenis" value="false">
-                    nee
-                </label>
+                    <label for="notaris-achternaam">Achternaam</label>
+                    <input type="text" id="notaris-achternaam" name="notarisAchternaam">
+                </div>
             </fieldset>
 
-                <fieldset id="fase_4" class="stap">
-                    <legend>Notaris</legend>
-                    <p>Protocolnummer notaris</p>
-                    <label>
-                        <input type="radio" name="erfenis" value="true">
-                        Ja
-                    </label>
-                    <p>Protocolnummer notaris</p>
-                    <label>
-                        Voorletter(s)
-                        <input type="text">
-                    </label>
+            <!-- KNOPPEN -->
+            <div id="stappen_button">
+                <button type="button" id="vorige_stap">Vorige</button>
+                <button type="button" id="volgende_stap">Volgende</button>
+            </div>
+        </form>
+    </section>
+</main>
 
-                    <label>
-                        tussenvoegsel
-                        <input type="text">
-                    </label>
-                    <label>
-                        Achternaam
-                        <input type="text">
-                    </label>
-
-                </fieldset>
-
-
-                <div id="stappen_button">
-                    <button type="button" id="vorige_stap">Vorige</button>
-                    <button type="button" id="volgende_stap">Volgende</button>
-                </div>
-
-
-            </form>
-        </div>
-
-
-    </main>
-
-    <footer>Let op: Het invullen van deze aangifte kost tijd. Zorg dat u voldoende tijd heeft en dat u alle benodigde
-        gegevens bij de hand heeft voordat u begint.</footer>
+<footer>
+    Let op: Het invullen van deze aangifte kost tijd. Zorg dat u voldoende tijd heeft en dat u alle benodigde gegevens bij de hand heeft voordat u begint.
+</footer>
 
 </body>
-
 </html>

@@ -83,5 +83,19 @@ function dagenInMaand(maand) {
   // init
   showStep(current);
 
-
+  const finaalJa = document.getElementById("finaal-ja");
+  const finaalNee = document.getElementById("finaal-nee");
+  const partnerVraag = document.getElementById("partnerVraag");
+  
+  finaalJa.addEventListener("change", function () {
+      if (finaalJa.checked) {
+          partnerVraag.classList.remove("hidden");
+      }
+  });
+  
+  finaalNee.addEventListener("change", function () {
+      if (finaalNee.checked) {
+          partnerVraag.classList.add("hidden");
+      }
+  });
  

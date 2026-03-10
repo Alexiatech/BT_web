@@ -1,105 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-
-:root {}
-
-img {
-    width: 6em;
+:root {
+    --ns-geel: #ffc61e;
+    --ns-blauw: #003082;
+    --lichtgrijs: #f1f5f6;
 }
 
-header {
-    background-color: #ffc61e;
-    width: 100%;
-    color: red;
-    font-weight: 2em;
-    display: flex;
-    font-weight: bold
-}
-
-header img {
-    justify-content: flex-end
+* {
+    box-sizing: border-box;
 }
 
 body {
-    justify-content: center;
     margin: 0;
     padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    color: #111;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+header {
+    background-color: var(--ns-geel);
+    width: 100%;
+    color: red;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+header img {
+    width: 4.5em;
+    flex-shrink: 0;
+}
+
+main {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    padding: 2em 0 0 0;
 }
 
 .styling {
     background-color: #ffffff;
     box-shadow: 5px 5px 20px rgb(200, 199, 199);
-}
-
-input[type="text"], input[type="number"]{
-    display: block;
-    width: 200px;
-    font-size: 17px;
-    background-color: #f1f5f6;
-    border-radius: 5px;
-    margin: 0.3rem 0 1.2rem 0;
-    padding: 0.4em;
-    width: 20em;
-    box-shadow: inset 0 0 5px rgba(194, 193, 193, 0.8);
-
-}
-
-/* https://stackoverflow.com/questions/13107118/how-to-remove-the-arrows-from-inputtype-number-in-opera */
-
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
-}
-
-input[type="date"] { 
-    border: 2px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-  }
-
-  input[type="date"]:focus {
-    border-color: #007bff;
-    background-color: #fff;
-    outline: none;
-  }
-
-
-legend {
-    color: blue;
-    font-weight: bold
-}
-
-.datum {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-
-.datum select {
-    width: 100px;
-    padding: 0.3em;
-}
-
-.stap { display: none; }
-.stap.is-active { display: block; }
-
-.hidden { display: none; }
-
-
-main {
-    width: 100%;
-    max-width: 900px;
-
-}
-
-p {
-    font-size: 1.2em;
-
+    border-radius: 70px;
+    padding: 40px; 
 }
 
 form {
@@ -108,12 +60,118 @@ form {
 
 fieldset {
     width: 100%;
-    box-sizing: border-box;
     margin: 16px 0;
     padding: 16px;
     border: none;
 }
 
+legend {
+    color: blue;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+
+    padding: 10px;
+
+    border-radius: 6px;
+
+    margin: 0.3rem 0 1rem 0;
+
+    background-color: #f1f5f6;
+
+    box-shadow: inset 0 0 5px rgba(194,193,193,0.8);
+}
+
+/* pijltjes number input weghalen */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+input[type="date"]:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    outline: none;
+}
+.datum {
+    display: grid;
+    grid-template-columns: 7rem 14rem auto;
+    column-gap: 20px;
+    row-gap: 12px;
+    align-items: end;
+    justify-items: start;
+}
+
+.datum legend {
+    grid-column: 1 / -1;
+    margin-bottom: 0.5rem;
+    color: blue;
+    font-weight: bold;
+}
+
+.datum label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.datum span {
+    font-size: 20px;
+    font-weight: bold;
+    justify-self: start;
+    align-self: end;
+    margin-bottom: 2.5rem;
+}
+
+.datum select,
+.datum input {
+    width: 100%;
+}
+.stap {
+    display: none;
+}
+
+.stap.is-active {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+
+
+#stappen_button{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 15px;
+}
 
 
 button {
@@ -125,26 +183,64 @@ button {
     border-radius: 10px;
     color: white;
     font-size: 17px;
-    padding: 20px;
-
+    padding: 14px 20px;
 }
 
 button:hover {
     background-color: rgb(76, 76, 187);
 }
 
-
 button:active {
     transform: scale(0.95);
-  }
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
 
 
+
+/* Mobiel */
 @media (max-width: 600px) {
-    body {
-        padding: 16px 12px;
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    header img {
+        width: 3.5em;
+    }
+
+    main {
+        padding: 0.75rem;
+    }
+
+    .styling {
+        padding: 0.75rem;
+        box-shadow: none;
     }
 
     fieldset {
         padding: 12px;
+        margin: 12px 0;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #stappen_button {
+        flex-direction: column;
     }
 }
