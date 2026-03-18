@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <script src="script/script.js" defer></script>
     <link rel="icon" href="images/hva_icon.png">
 </head>
+
 <body>
 
     <header>
@@ -17,7 +19,7 @@
         </p>
 
         <a href="index.html">
-            <img src="images/hva_icon.png" alt="Logo van de HvA">
+            <img src="images/NS-logo.png" alt="Logo van de NS">
         </a>
     </header>
 
@@ -25,37 +27,44 @@
         <section class="styling">
             <h1>Aangifte Erfbelasting 2025</h1>
 
+            <nav class="progress-container">
+                <ol>
+
+                    <li class="step active">1</li>
+                    <li class="step">2</li>
+                    <li class="step">3</li>
+                    <li class="step">4</li>
+                    <li class="step">5</li>
+
+                </ol>
+
+                <div class="progress-bar" id="progress"></div>
+            </nav>
+
             <form>
                 <!-- STAP 1 -->
                 <fieldset id="fase_1" class="stap is-active">
                     <legend>Gegevens van de overledene</legend>
 
                     <label for="voorletters">Voorletter(s)
-                    <input type="text" id="voorletters" name="voorletters" placeholder="Bijvoorbeeld A.B." required>
-                    <span class="error-text">Dit veld is verplicht</span>
-                </label>
+                        <input type="text" id="voorletters" name="voorletters" placeholder="Bijvoorbeeld A.B." required>
+                        <span class="error-text">Dit veld is verplicht</span>
+                    </label>
 
                     <label for="tussenvoegsel">Tussenvoegsel(s)
-                    <input type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="Bijvoorbeeld van der">
+                        <input type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="Bijvoorbeeld van der">
                     </label>
 
                     <label for="achternaam">Achternaam
-                    <input type="text" id="achternaam" name="achternaam" placeholder="Achternaam" required>
-                    <span class="error-text">Dit veld is verplicht</span>
+                        <input type="text" id="achternaam" name="achternaam" placeholder="Achternaam" required>
+                        <span class="error-text">Dit veld is verplicht</span>
                     </label>
 
                     <label for="bsn">BSN overledene
-                    <input
-                        type="text"
-                        id="bsn"
-                        name="bsn"
-                        inputmode="numeric"
-                        maxlength="9"
-                        placeholder="Zet hier het BSN van de overledene"
-                        required
-                    >
-                    <span class="error-text">Dit veld is verplicht</span>
-                </label>
+                        <input type="text" id="bsn" name="bsn" inputmode="numeric" maxlength="9"
+                            placeholder="Zet hier het BSN van de overledene" required>
+                        <span class="error-text">Dit veld is verplicht</span>
+                    </label>
                     <fieldset class="datum">
                         <legend>Overlijdensdatum</legend>
                         <label for="dag">Dag
@@ -93,42 +102,50 @@
                                 <option value="31">31</option>
                             </select>
                         </label>
-                  
 
-                    <label>Maand
-                        <select id="maand" required>
-                            <option value="1">Januari</option>
-                            <option value="2">Februari</option>
-                            <option value="3">Maart</option>
-                            <option value="4">April</option>
-                            <option value="5">Mei</option>
-                            <option value="6">Juni</option>
-                            <option value="7">Juli</option>
-                            <option value="8">Augustus</option>
-                            <option value="9">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
-                    </label>
-                    <span>2025</span>
+
+                        <label>Maand
+                            <select id="maand" required>
+                                <option value="" selected disabled>Kies maand</option>
+                                <option value="1">Januari</option>
+                                <option value="2">Februari</option>
+                                <option value="3">Maart</option>
+                                <option value="4">April</option>
+                                <option value="5">Mei</option>
+                                <option value="6">Juni</option>
+                                <option value="7">Juli</option>
+                                <option value="8">Augustus</option>
+                                <option value="9">September</option>
+                                <option value="10">Oktober</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </label>
+                        <span>2025</span>
+                    </fieldset>
                 </fieldset>
-                </fieldset>
 
 
-                 <!-- STAP 2 -->
-                 <fieldset id="fase_2" class="stap">
+                <!-- STAP 2 -->
+                <fieldset id="fase_2" class="stap">
                     <legend>Relatiestatus van de overledene</legend>
-
+                
                     <p>Was de overledene getrouwd of had de overledene een geregistreerde partner?</p>
-                    <label>
-                        <input type="radio" name="partnerStatus" value="ja">
-                        Ja
-                    </label>
-                    <label>
-                        <input type="radio" name="partnerStatus" value="nee">
-                        Nee
-                    </label>
+                
+                    <div class="radio-group" id="partner-group">
+                        <label>
+                            <input type="radio" name="partnerStatus" value="ja" required>
+                            Ja
+                        </label>
+                
+                        <label>
+                            <input type="radio" name="partnerStatus" value="nee">
+                            Nee
+                        </label>
+                    </div>
+                
+                    <span class="error-text">Maak een keuze.</span>
+                </fieldset>
 
                     <div id="voorwaarden-blok" class="hidden">
                         <p>Waren huwelijkse of partnerschapsvoorwaarden vastgelegd in een notariële akte?</p>
@@ -140,119 +157,132 @@
                             <input type="radio" name="voorwaarden" value="nee">
                             Nee
                         </label>
+                        
 
-                     
-                            <p>Hadden de overledene en diens partner een finaal verrekenbeding?</p>
-                            <label>
-                                <input type="radio" name="finaalVerrekenbeding" value="ja">
-                                Ja
-                            </label>
-                            <label>
-                                <input type="radio" name="finaalVerrekenbeding" value="nee">
-                                Nee
-                            </label>
 
-                            <label for="datum-voorwaarden">Datum huwelijkse of partnerschapsvoorwaarden</label>
-                            <input type="date" id="datum-voorwaarden" name="datumVoorwaarden">
+                        <p>Hadden de overledene en diens partner een finaal verrekenbeding?</p>
+                        <label>
+                            <input type="radio" name="finaalVerrekenbeding" value="ja">
+                            Ja
+                        </label>
+                        <label>
+                            <input type="radio" name="finaalVerrekenbeding" value="nee">
+                            Nee
+                        </label>
+
+                        <label for="datum-voorwaarden">Datum huwelijkse of partnerschapsvoorwaarden</label>
+                        <input type="date" id="datum-voorwaarden" name="datumVoorwaarden">
                     </div>
                 </fieldset>
 
-                
-               <!-- STAP 3 -->
-<fieldset id="fase_3" class="stap">
-    <legend>Kinderen en testament</legend>
 
-    <p>Had de overledene kinderen?</p>
-    <label>
-        <input type="radio" name="heeftKinderen" value="ja">
-        Ja
-    </label>
-    <label>
-        <input type="radio" name="heeftKinderen" value="nee">
-        Nee
-    </label>
+                <!-- STAP 3 -->
+                <fieldset id="fase_3" class="stap">
+                    <legend>Kinderen en testament</legend>
 
-    <div id="kinderen-blok" class="hidden">
-        <p>Is 1 van deze kinderen eerder overleden dan de overledene voor wie u nu aangifte doet?</p>
-        <label>
-            <input type="radio" name="eerderOverledenKind" value="ja">
-            Ja
-        </label>
-        <label>
-            <input type="radio" name="eerderOverledenKind" value="nee">
-            Nee
-        </label>
+                    <p>Had de overledene kinderen?</p>
+                    <label>
+                        <input type="radio" name="heeftKinderen" value="ja">
+                        Ja
+                    </label>
+                    <label>
+                        <input type="radio" name="heeftKinderen" value="nee">
+                        Nee
+                    </label>
 
-        <div id="kleinkinderen-blok" class="hidden">
-            <p>Had dit overleden kind zelf kinderen?</p>
-            <label>
-                <input type="radio" name="overledenKindHadKinderen" value="ja">
-                Ja
-            </label>
-            <label>
-                <input type="radio" name="overledenKindHadKinderen" value="nee">
-                Nee
-            </label>
-        </div>
-    </div>
+                    <div id="kinderen-blok" class="hidden">
+                        <p>Is 1 van deze kinderen eerder overleden dan de overledene voor wie u nu aangifte doet?</p>
+                        <label>
+                            <input type="radio" name="eerderOverledenKind" value="ja">
+                            Ja
+                        </label>
+                        <label>
+                            <input type="radio" name="eerderOverledenKind" value="nee">
+                            Nee
+                        </label>
 
-    <p>Had de overledene een testament?</p>
-    <label>
-        <input type="radio" name="heeftTestament" value="ja">
-        Ja
-    </label>
-    <label>
-        <input type="radio" name="heeftTestament" value="nee">
-        Nee
-    </label>
+                        <div id="kleinkinderen-blok" class="hidden">
+                            <p>Had dit overleden kind zelf kinderen?</p>
+                            <label>
+                                <input type="radio" name="overledenKindHadKinderen" value="ja">
+                                Ja
+                            </label>
+                            <label>
+                                <input type="radio" name="overledenKindHadKinderen" value="nee">
+                                Nee
+                            </label>
+                        </div>
+                    </div>
 
-    <div id="testament-blok" class="hidden">
-        <label for="datum-testament">Datum testament</label>
-        <input type="date" id="datum-testament" name="datumTestament">
-    </div>
-</fieldset>
 
-<!-- STAP 4 -->
-<fieldset id="fase_4" class="stap">
-    <legend>Gegevens van de notaris</legend>
 
-    <p>Is er een notaris betrokken?</p>
-    <label>
-        <input type="radio" name="heeftNotaris" value="ja">
-        Ja
-    </label>
-    <label>
-        <input type="radio" name="heeftNotaris" value="nee">
-        Nee
-    </label>
 
-    <div id="notaris-blok" class="hidden">
-        <label for="protocolnummer">Protocolnummer notaris</label>
-        <input type="text" id="protocolnummer" name="protocolnummer">
+                </fieldset>
 
-        <label for="notaris-voorletters">Voorletter(s)</label>
-        <input type="text" id="notaris-voorletters" name="notarisVoorletters">
+                <!-- STAP 4 -->
+                <fieldset id="fase_4" class="stap">
+                    <legend>Gegevens van de notaris</legend>
 
-        <label for="notaris-tussenvoegsel">Tussenvoegsel</label>
-        <input type="text" id="notaris-tussenvoegsel" name="notarisTussenvoegsel">
+                    <p>Had de overledene een testament?</p>
+                    <label>
+                        <input type="radio" name="heeftNotaris" value="ja">
+                        Ja
+                    </label>
+                    <label>
+                        <input type="radio" name="heeftNotaris" value="nee">
+                        Nee
+                    </label>
 
-        <label for="notaris-achternaam">Achternaam</label>
-        <input type="text" id="notaris-achternaam" name="notarisAchternaam">
-    </div>
-</fieldset>
+                    <div id="notaris-blok" class="hidden">
+                       
+                    
+                        <label for="datum-testament">Datum testament</label>
+                        <input type="date" id="datum-testament" name="datumTestament">
+                    
+                        <label for="protocolnummer">Protocolnummer notaris</label>
+                        <input type="text" id="protocolnummer" name="protocolnummer">
+                    
+                        <div>
+                            <label for="notaris-voorletters">Voorletter(s)</label>
+                            <input type="text" id="notaris-voorletters" name="notarisVoorletters">
+                    
+                            <label for="notaris-tussenvoegsel">Tussenvoegsel</label>
+                            <input type="text" id="notaris-tussenvoegsel" name="notarisTussenvoegsel">
+                    
+                            <label for="notaris-achternaam">Achternaam</label>
+                            <input type="text" id="notaris-achternaam" name="notarisAchternaam">
+                        </div>
+                    </div>
+                </fieldset>
 
-            <!-- KNOPPEN -->
-            <div id="stappen_button">
-                <button type="button" id="vorige_stap">Vorige</button>
-                <button type="button" id="volgende_stap">Volgende</button>
-            </div>
-        </form>
-    </section>
-</main>
+                <fieldset id="fase_5" class="stap">
+                    <h2>Verkrijgers toevoegen</h2>
+                    <p class="uitleg-verkrijgers">
+                        Klik op <strong>‘+ Voeg persoon toe’</strong> om een verkrijger toe te voegen. 
+                        Voor iedere persoon die een deel van de erfenis ontvangt vult u apart de gegevens in.
+                        </p>
+                    <section class="verkrijgers-blok">
+                        <button type="button" id="addPersonBtn">+ Voeg persoon toe</button>
 
-<footer>
-    Let op: Het invullen van deze aangifte kost tijd. Zorg dat u voldoende tijd heeft en dat u alle benodigde gegevens bij de hand heeft voordat u begint.
-</footer>
+                        <div id="personList"></div>
+                        <div id="fieldsetsContainer"></div>
+                    </section>
+
+                </fieldset>
+                <!-- KNOPPEN -->
+                <div id="stappen_button">
+                    <button type="button" id="vorige_stap">Vorige</button>
+                    <button type="button" id="volgende_stap">Volgende</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        Let op: Het invullen van deze aangifte kost tijd. Zorg dat u voldoende tijd heeft en dat u alle benodigde
+        gegevens bij de hand heeft voordat u begint.
+    </footer>
 
 </body>
+
 </html>

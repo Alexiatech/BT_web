@@ -11,23 +11,29 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', 'Lucida Sans', Geneva, Verdana, sans-serif;
     background-color: #fff;
-    color: #111;
+    animation: fadeIn 0.6s ease forwards;
 }
+
+
 
 img {
     max-width: 100%;
     height: auto;
 }
 
+
 header {
-    background-color: #003082;
+    background-color: var(--ns-geel);
    
     width: 100%;
-    color: white;
+    color: var(--ns-blauw);
     
 
     font-weight: bold;
@@ -53,7 +59,7 @@ header::after {
     width: 100%;
     height: 30px;
 
-    background-color: #ffc61e;
+    background-color: var(--ns-blauw);
 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
 
@@ -64,34 +70,94 @@ header img {
     width: 4.5em;
     flex-shrink: 0;
 }
+ /*  MARK: eerste paggina  */
 
+
+
+ .home {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background:#f5f7f9;
+}
+
+
+.home main{
+    max-width:700px;
+    margin-top:80px;
+
+    background:white;
+    padding:40px;
+
+    border-radius:16px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+
+    text-align:center;
+}
+
+
+.home h1{
+    color:#003082;
+    margin-bottom:20px;
+}
+
+
+.home main p{
+    color:#003082;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+
+.home main a{
+    display:inline-block;
+
+    background:#ffc61e;
+    color:#003082;
+
+    font-weight:bold;
+    text-decoration:none;
+
+    padding:16px 24px;
+
+    border-radius:10px;
+
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+
+    transition:all 0.2s ease;
+}
+
+.home main a:hover{
+    background:#ffd84d;
+    transform:translateY(-2px);
+}
+
+/* 
+MARK: tweede pagina  */
 main {
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
     margin: auto;
     padding: 2em 0 0 0;
 }
 
 .styling {
     background-color: #ffffff;
-    box-shadow: 5px 5px 20px rgb(200, 199, 199);
-    border-radius: 70px;
+    box-shadow: 2px 5px 5px 5px rgb(200, 199, 199);
+    border-radius: 4px;
     padding: 40px; 
 }
 
-form {
-    width: 100%;
-}
+
 
 fieldset {
     width: 100%;
-    margin: 16px 0;
-    padding: 16px;
     border: none;
 }
 
 legend {
-    color: blue;
+    color: var(--ns-blauw);
     font-weight: bold;
 }
 
@@ -100,13 +166,14 @@ label {
     margin-bottom: 1rem;
 }
 
+
 input[type="text"],
 input[type="number"],
 input[type="date"],
 select {
     width: 100%;
     max-width: 100%;
-    font-size: 16px;
+    font-size: 18px;
 
     padding: 10px;
 
@@ -117,8 +184,10 @@ select {
     background-color: #f1f5f6;
 
     box-shadow: inset 0 0 5px rgba(194,193,193,0.8);
+    
 }
 
+/* MARK: input */
 /* pijltjes number input weghalen */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -127,6 +196,7 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
+
 
 input[type="date"]:focus,
 input[type="text"]:focus,
@@ -138,10 +208,20 @@ select:focus {
 }
 
 input.input-error,
-select.input-error {
+select.input-error{
     border: 2px solid #d93025;
     background-color: rgba(217, 48, 37, 0.15);
+    animation: fadeIn 1s;
 }
+
+.radio-group.error {
+    border: 2px solid #d93025;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(217, 48, 37, 0.15);
+    animation: fadeIn 1s;
+}
+
 
 .error-text{
     display: none;
@@ -149,6 +229,8 @@ select.input-error {
     font-size: 0.9rem;
     font-weight: bold;
     margin-top: -8px;
+    animation: fadeIn 1s;
+    
 }
 
 
@@ -163,9 +245,7 @@ select.input-error {
 
 .datum legend {
     grid-column: 1 / -1;
-    margin-bottom: 0.5rem;
-    color: blue;
-    font-weight: bold;
+    margin-bottom: 3rem;
 }
 
 .datum label {
@@ -182,10 +262,12 @@ select.input-error {
     margin-bottom: 2.5rem;
 }
 
+
 .datum select,
 .datum input {
     width: 100%;
 }
+
 .stap {
     display: none;
 }
@@ -216,6 +298,123 @@ p {
     line-height: 1.5;
 }
 
+/* container */
+
+.progress-container {
+    position: relative;
+    margin: 40px 0;
+  }
+  
+  /* lijst horizontaal maken */
+  
+  .progress-container ol {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+  }
+  
+  /* grijze lijn achter de stappen */
+  
+  .progress-container ol::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #cfcfcf;
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+  
+  /* blauwe progress bar */
+  
+  .progress-bar {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: var(--ns-blauw);
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: width 0.3s ease;
+  }
+  
+  /* stappen */
+  
+  .step {
+    position: relative;
+    z-index: 2;
+    background: white;
+    border: 3px solid #cfcfcf;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+/* de persoon verkijrger */
+
+.person-list,
+#personList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.person-item {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.verkrijger-fieldset {
+    border: 1px solid #d9d9d9;
+    border-radius: 12px;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #fff;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.form-row label {
+    flex: 1 1 220px;
+}
+
+.remove-btn {
+    margin-top: 1rem;
+    background: #c62828;
+}
+
+.remove-btn:hover {
+    background: #a91f1f;
+}
+
+.max-message {
+    color: #c62828;
+    font-weight: 600;
+}
+  
+  /* actieve stappen */
+  
+  .step.active {
+    border-color: #1e4c9a;
+    color: #1e4c9a;
+  }
 
 
 #stappen_button{
@@ -258,11 +457,13 @@ button:active {
 }
 
 
+
 footer {
     padding: 1rem;
     font-size: 1rem;
     line-height: 1.5;
 }
+
 
 
 
@@ -304,3 +505,13 @@ footer {
         flex-direction: column;
     }
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    } }
