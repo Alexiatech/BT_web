@@ -1,14 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+/* =========================================================
+MARK: 1. BASIS / ROOT
+Hier definieer ik de hoofdkleuren van de huisstijl en herbruikbare
+variabelen. Door custom properties te gebruiken blijven kleuren
+consistent in de hele interface en kan ik ze makkelijker op meerdere
+plekken opnieuw gebruiken.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/--*
+========================================================= */
+
 :root {
     --ns-geel: #ffc61e;
     --ns-blauw: #003082;
     --lichtgrijs: #f1f5f6;
 }
 
+
+/* =========================================================
+MARK: 2. ALGEMENE RESET
+Hier zet ik box-sizing op border-box zodat padding en borders
+netter meetellen in de layout en elementen voorspelbaarder schalen.
+
+Bron:
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/box-sizing
+========================================================= */
+
 * {
     box-sizing: border-box;
 }
+
+
+/* =========================================================
+MARK: 3. PAGINA / GLOBALE BASIS
+De body krijgt hier de algemene layout, typografie en een subtiele
+fade-in animatie bij het laden van de pagina.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40keyframes
+https://developer.mozilla.org/en-US/docs/Web/CSS/animation
+========================================================= */
 
 body {
     display: flex;
@@ -21,32 +55,36 @@ body {
     animation: fadeIn 0.6s ease forwards;
 }
 
-
-
 img {
     max-width: 100%;
     height: auto;
 }
 
 
+/* =========================================================
+MARK: 4. HEADER
+De header is opgebouwd met flexbox zodat de inhoud netjes naast
+elkaar blijft staan. Met een pseudo-element voeg ik de blauwe balk
+onder de header toe als visueel onderdeel van de NS-stijl.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout
+https://developer.mozilla.org/en-US/docs/Web/CSS/::after
+https://developer.mozilla.org/en-US/docs/Web/CSS/position
+========================================================= */
+
 header {
     background-color: var(--ns-geel);
-   
     width: 100%;
     color: var(--ns-blauw);
-    
-
     font-weight: bold;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 1rem;
 
     padding: 1rem 3rem;
-    
-
     position: relative;
 }
 
@@ -55,86 +93,86 @@ header::after {
     position: absolute;
     left: 0;
     bottom: -6px;
-
     width: 100%;
     height: 30px;
-
     background-color: var(--ns-blauw);
-
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-
-    
 }
 
 header img {
     width: 4.5em;
     flex-shrink: 0;
 }
- /*  MARK: eerste paggina  */
 
 
+/* =========================================================
+MARK: 5. EERSTE PAGINA / HOME
+De homepagina is als losse introductiepagina opgebouwd. Hier gebruik
+ik flexbox om de inhoud te centreren en een kaart-achtig vlak om de
+inhoud meer nadruk te geven.
 
- .home {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    background:#f5f7f9;
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout
+https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+========================================================= */
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f5f7f9;
+}
+
+.home main {
+    max-width: 700px;
+    margin-top: 80px;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.home h1 {
+    color: #003082;
+    margin-bottom: 20px;
+}
+
+.home main p {
+    color: #003082;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.home main a {
+    display: inline-block;
+    background: #ffc61e;
+    color: #003082;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 16px 24px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.home main a:hover {
+    background: #ffd84d;
+    transform: translateY(-2px);
 }
 
 
-.home main{
-    max-width:700px;
-    margin-top:80px;
+/* =========================================================
+MARK: 6. TWEEDE PAGINA / FORMULIERSTRUCTUUR
+Hier begint de hoofdopmaak van de formulierpagina. Ik gebruik een
+max-width zodat de inhoud leesbaar blijft en niet te breed uitloopt.
 
-    background:white;
-    padding:40px;
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/CSS/max-width
+https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+========================================================= */
 
-    border-radius:16px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-
-    text-align:center;
-}
-
-
-.home h1{
-    color:#003082;
-    margin-bottom:20px;
-}
-
-
-.home main p{
-    color:#003082;
-    line-height:1.6;
-    margin-bottom:30px;
-}
-
-
-.home main a{
-    display:inline-block;
-
-    background:#ffc61e;
-    color:#003082;
-
-    font-weight:bold;
-    text-decoration:none;
-
-    padding:16px 24px;
-
-    border-radius:10px;
-
-    box-shadow:0 4px 8px rgba(0,0,0,0.2);
-
-    transition:all 0.2s ease;
-}
-
-.home main a:hover{
-    background:#ffd84d;
-    transform:translateY(-2px);
-}
-
-/* 
-MARK: tweede pagina  */
 main {
     width: 100%;
     max-width: 800px;
@@ -146,10 +184,8 @@ main {
     background-color: #ffffff;
     box-shadow: 2px 5px 5px 5px rgb(200, 199, 199);
     border-radius: 4px;
-    padding: 40px; 
+    padding: 40px;
 }
-
-
 
 fieldset {
     width: 100%;
@@ -167,6 +203,18 @@ label {
 }
 
 
+/* =========================================================
+MARK: 7. INPUTS / FORMULIERSTYLING
+De tekstvelden, datumvelden, number inputs en selectvelden krijgen
+hier een uniforme stijl. Ik haal ook de standaard pijltjes bij
+number inputs weg zodat de velden rustiger ogen.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance
+https://css-tricks.com/form-validation-ux-html-css/
+https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number
+========================================================= */
+
 input[type="text"],
 input[type="number"],
 input[type="date"],
@@ -174,21 +222,14 @@ select {
     width: 100%;
     max-width: 100%;
     font-size: 18px;
-
     padding: 10px;
-
     border-radius: 6px;
-
     margin: 0.3rem 0 1rem 0;
-
     background-color: #f1f5f6;
-
-    box-shadow: inset 0 0 5px rgba(194,193,193,0.8);
-    
+    box-shadow: inset 0 0 5px rgba(194, 193, 193, 0.8);
 }
 
-/* MARK: input */
-/* pijltjes number input weghalen */
+/* Pijltjes bij number input verbergen voor een rustigere interface */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -197,7 +238,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-
+/* Focus state zodat actieve velden duidelijker zichtbaar zijn */
 input[type="date"]:focus,
 input[type="text"]:focus,
 input[type="number"]:focus,
@@ -207,8 +248,9 @@ select:focus {
     outline: none;
 }
 
+/* Error styling voor foutieve velden */
 input.input-error,
-select.input-error{
+select.input-error {
     border: 2px solid #d93025;
     background-color: rgba(217, 48, 37, 0.15);
     animation: fadeIn 1s;
@@ -222,17 +264,24 @@ select.input-error{
     animation: fadeIn 1s;
 }
 
-
-.error-text{
+.error-text {
     display: none;
     color: #d93025;
     font-size: 0.9rem;
     font-weight: bold;
     margin-top: -8px;
     animation: fadeIn 1s;
-    
 }
 
+
+/* =========================================================
+MARK: 8. DATUM-SECTIE
+Voor de datumgroep gebruik ik CSS Grid zodat labels, inputs en
+tekst netjes in kolommen en rijen blijven staan.
+
+Bron:
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout
+========================================================= */
 
 .datum {
     display: grid;
@@ -262,11 +311,22 @@ select.input-error{
     margin-bottom: 2.5rem;
 }
 
-
 .datum select,
 .datum input {
     width: 100%;
 }
+
+
+/* =========================================================
+MARK: 9. STAPPEN / TONEN EN VERBERGEN
+Met .stap, .is-active, .hidden en .show maak ik verschillende
+formulierdelen zichtbaar of onzichtbaar. De overgang wordt zachter
+gemaakt met transitions.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions
+https://developer.mozilla.org/en-US/docs/Web/CSS/opacity
+========================================================= */
 
 .stap {
     display: none;
@@ -293,32 +353,41 @@ select.input-error{
     opacity: 1;
     transform: translateY(0);
 }
+
 p {
     font-size: 1.1em;
     line-height: 1.5;
 }
 
-/* container */
+
+/* =========================================================
+MARK: 10. PROGRESS CONTAINER
+Hier bouw ik de voortgangsbalk op met een lijst, een achtergrondlijn
+en een aparte blauwe voortgangslijn.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout
+https://developer.mozilla.org/en-US/docs/Web/CSS/::before
+https://developer.mozilla.org/en-US/docs/Web/CSS/position
+========================================================= */
 
 .progress-container {
     position: relative;
     margin: 40px 0;
-  }
-  
-  /* lijst horizontaal maken */
-  
-  .progress-container ol {
+}
+
+/* Lijst horizontaal plaatsen */
+.progress-container ol {
     display: flex;
     justify-content: space-between;
     padding: 0;
     margin: 0;
     list-style: none;
     position: relative;
-  }
-  
-  /* grijze lijn achter de stappen */
-  
-  .progress-container ol::before {
+}
+
+/* Grijze lijn achter de stappen */
+.progress-container ol::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -328,11 +397,10 @@ p {
     background: #cfcfcf;
     transform: translateY(-50%);
     z-index: 0;
-  }
-  
-  /* blauwe progress bar */
-  
-  .progress-bar {
+}
+
+/* Blauwe progress bar */
+.progress-bar {
     position: absolute;
     top: 50%;
     left: 0;
@@ -342,11 +410,10 @@ p {
     transform: translateY(-50%);
     z-index: 1;
     transition: width 0.3s ease;
-  }
-  
-  /* stappen */
-  
-  .step {
+}
+
+/* Stappen in de voortgangsbalk */
+.step {
     position: relative;
     z-index: 2;
     background: white;
@@ -358,8 +425,19 @@ p {
     align-items: center;
     justify-content: center;
     font-weight: 600;
-  }
-/* de persoon verkijrger */
+}
+
+
+/* =========================================================
+MARK: 11. PERSOON / VERKRIJGER BLOKKEN
+De lijst met personen en de extra fieldsets zijn opgebouwd als
+aparte blokken zodat toegevoegde personen visueel los van elkaar
+blijven staan.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout
+https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+========================================================= */
 
 .person-list,
 #personList {
@@ -408,16 +486,34 @@ p {
     color: #c62828;
     font-weight: 600;
 }
-  
-  /* actieve stappen */
-  
-  .step.active {
+
+
+/* =========================================================
+MARK: 12. ACTIEVE STAPPEN
+Hier geef ik de actieve stap in de progress indicator een andere
+kleur zodat de huidige positie duidelijker is.
+
+Bron:
+https://developer.mozilla.org/en-US/docs/Web/CSS/border-color
+========================================================= */
+
+.step.active {
     border-color: #1e4c9a;
     color: #1e4c9a;
-  }
+}
 
 
-#stappen_button{
+/* =========================================================
+MARK: 13. STAPPENKNOPPEN / STICKY BALK
+Deze knopbalk blijft onderin zichtbaar met position: sticky,
+zodat de gebruiker makkelijk door de stappen heen kan blijven
+navigeren.
+
+Bron:
+https://developer.mozilla.org/en-US/docs/Web/CSS/position
+========================================================= */
+
+#stappen_button {
     display: flex;
     justify-content: space-between;
     position: sticky;
@@ -426,6 +522,18 @@ p {
     padding: 15px;
 }
 
+
+/* =========================================================
+MARK: 14. BUTTONS EN RADIOBUTTONS
+De knoppen krijgen hover- en active-feedback. Voor de radiobuttons
+gebruik ik accent-color zodat de browserstijl beter aansluit op de
+huisstijl zonder volledig custom controls te bouwen.
+
+Bronnen:
+https://css-tricks.com/almanac/properties/a/accent-color/
+https://www.smashingmagazine.com/2021/09/simplifying-form-styles-accent-color/
+https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
+========================================================= */
 
 button {
     background-color: blue;
@@ -439,14 +547,12 @@ button {
     padding: 14px 20px;
 }
 
-input[type="radio"]{
+input[type="radio"] {
     transform: scale(1.6);
     background: var(--ns-geel);
     accent-color: var(--ns-blauw);
     cursor: pointer;
 }
-
-
 
 button:hover {
     background-color: rgb(76, 76, 187);
@@ -457,6 +563,13 @@ button:active {
 }
 
 
+/* =========================================================
+MARK: 15. FOOTER
+De footer krijgt hier alleen basis typografie en spacing.
+
+Bron:
+https://developer.mozilla.org/en-US/docs/Web/CSS/padding
+========================================================= */
 
 footer {
     padding: 1rem;
@@ -465,9 +578,16 @@ footer {
 }
 
 
+/* =========================================================
+MARK: 16. RESPONSIVE / MOBIEL
+Met een media query pas ik de layout aan voor kleinere schermen.
+De header stapelt, knoppen worden breder en de padding wordt kleiner
+zodat het formulier ook mobiel bruikbaar blijft.
 
+Bron:
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries
+========================================================= */
 
-/* Mobiel */
 @media (max-width: 600px) {
     header {
         flex-direction: column;
@@ -506,12 +626,24 @@ footer {
     }
 }
 
+
+/* =========================================================
+MARK: 17. ANIMATIE
+Deze fade-in animatie gebruik ik om de pagina iets zachter in beeld
+te laten komen wanneer deze geladen wordt.
+
+Bron:
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40keyframes
+========================================================= */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
-    } }
+    }
+}

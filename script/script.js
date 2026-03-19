@@ -2,7 +2,17 @@
 
 
 
-// MARK: CONST
+/* =========================================================
+MARK: 1. DOM SELECTORS / CONSTS
+Hier haal ik alle HTML-elementen op die ik later nodig heb in mijn script.
+Ik doe dit bovenaan, zodat ik in de rest van de code niet steeds opnieuw
+elementen hoef op te zoeken.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+========================================================= */
 const dagSelect = document.getElementById("dag");
 const maandSelect = document.getElementById("maand");
 
@@ -32,13 +42,27 @@ const fieldsetsContainer = document.getElementById("fieldsetsContainer");
 const personList = document.getElementById("personList");
 
 
+/* =========================================================
+MARK: 2. STATUS / TELLERS
+Hier houd ik bij op welke stap van het formulier de gebruiker zit
+en hoeveel extra verkrijgers er al zijn toegevoegd.
+========================================================= */
 
 let current = 0;
 let personCount = 0;
 let nextId = 1;
 
-//   MARK:DAGEN functie
-// kijkt hoeveel dagen er in een maand zitten
+/* =========================================================
+MARK: 3. DATUMLOGICA
+Deze functies zorgen ervoor dat het aantal dagen automatisch wordt aangepast
+aan de gekozen maand. Februari krijgt 28 dagen, sommige maanden 31 en de rest 30.
+Zo voorkom ik dat er ongeldige datums gekozen kunnen worden.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+========================================================= */
 
 function dagenInMaand(maand) {
     if (maand === 2) return 28;
@@ -76,14 +100,18 @@ if (maandSelect && dagSelect) {
  
 
 
-//   MARK: stappen form
-// Dit stuk code regelt het stappenformulier.
-// Het formulier bestaat uit meerdere stappen (fase_1, fase_2, fase_3, etc.).
-// De variabele "current" houdt bij welke stap op dat moment zichtbaar is.
-// showStep() zorgt ervoor dat alleen de juiste stap zichtbaar wordt.
-// Ook bepaalt deze functie wanneer de "Vorige" knop verborgen moet worden
-// en wanneer de "Volgende" knop verandert in "Verzenden".
+/* =========================================================
+MARK: 4. STAPPENFORMULIER
+Dit deel regelt het meerstappenformulier.
+De variabele current houdt bij welke stap actief is.
+showStep() zorgt ervoor dat steeds alleen de juiste stap zichtbaar is.
+Ook worden hier de knoppen Vorige en Volgende aangepast op basis van de stap
+waar de gebruiker zich op dat moment bevindt.
 
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+========================================================= */
   
 
 
@@ -100,9 +128,16 @@ function showStep(index) {
 }
 
 
-  // Controleert of alle velden in de huidige stap correct zijn ingevuld.
-// Als een veld ongeldig is, krijgt het een error-styling en fouttekst.
-// De gebruiker kan alleen naar de volgende stap als alles geldig is.
+/* =========================================================
+MARK: 5. VALIDATIE PER STAP
+Hier controleer ik of de velden in de huidige stap goed zijn ingevuld.
+Als dat niet zo is, krijgt het veld een foutstijl en wordt de foutmelding zichtbaar.
+De gebruiker kan pas verder als de huidige stap geldig is ingevuld.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checkValidity
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/checkValidity
+========================================================= */
 
 function validateStep() {
     if (!steps.length) return true;
@@ -158,8 +193,7 @@ function validateStep() {
             if (radioError) {
                 radioError.style.display = "none";
             }
-        } 
-        
+        }
     }
 
     return valid;
@@ -169,7 +203,16 @@ function validateStep() {
 
 
 
-  // Knoppen om door de stappen te navigeren
+ /* =========================================================
+MARK: 6. PROGRESS BAR
+Deze functie werkt de voortgangsbalk bij.
+De stappen die al geweest zijn krijgen een actieve stijl en de blauwe lijn
+wordt aangepast op basis van de huidige stap.
+
+Bronnen:
+https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+========================================================= */
 
 function updateProgress() {
     if (!progress || !stepCircles.length) return;
@@ -214,19 +257,6 @@ if (steps.length) {
     updateProgress();
 }
 
-document.querySelectorAll('input[type="radio"]').forEach(radio => {
-    radio.addEventListener("change", () => {
-        const group = radio.closest("fieldset")?.querySelector("#partner-group");
-        const error = radio.closest("fieldset")?.querySelector("#partner-error");
-
-        if (group) group.classList.remove("error");
-        if (error) error.style.display = "none";
-    });
-});
-
-
-//   MARK:de progress bar 
-
   function updateProgress() {
 
     stepCircles.forEach((circle, index) => {
@@ -243,11 +273,16 @@ document.querySelectorAll('input[type="radio"]').forEach(radio => {
     progress.style.width = percent + "%";
   }
 
-//   MARK: hidden vragen 
+/* =========================================================
+MARK: 9. VERBORGEN VRAGEN / CONDITIONELE LOGICA
+Hier laat ik extra vragen zien of verberg ik ze juist,
+afhankelijk van wat de gebruiker eerder heeft ingevuld.
+Op die manier blijft het formulier overzichtelijk en krijgt de gebruiker
+alleen de velden te zien die op dat moment relevant zijn.
 
-// Controleert de partnervraag.
-// "Ja" → extra vragen tonen
-// "Nee" → extra vragen verbergen
+Bron:
+https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+========================================================= */
 
 partnerRadios.forEach(radio => {
   radio.addEventListener("change", () => {
@@ -292,9 +327,12 @@ partnerRadios.forEach(radio => {
   });
 
 
-// toont of verbergt de notarisvelden.
-// als "notaris = ja" → velden zichtbaar
-// als "notaris = nee" → velden verborgen
+/* =========================================================
+MARK: 10. NOTARISBLOK
+Dit deel zorgt ervoor dat de extra notarisvelden alleen zichtbaar worden
+als de gebruiker aangeeft dat er een notaris betrokken is.
+Als dat niet zo is, blijven deze velden verborgen.
+========================================================= */
 
 function toggleNotarisBlok() {
 
@@ -315,7 +353,26 @@ notarisRadios.forEach(radio => {
 
 
 
-// add person 
+/* =========================================================
+MARK: 11. VERKRIJGERS TOEVOEGEN
+Dit deel van de code maakt het mogelijk om extra verkrijgers toe te voegen.
+Ik heb hiervoor zelf online gezocht en uitgeprobeerd hoe ik nieuwe formuliervelden
+dynamisch kon toevoegen aan het formulier. Vooral het stuk waarbij de knop
+'verkrijger toevoegen' gekoppeld moest worden aan het tonen van een nieuw blok
+met de rest van het formulier, kreeg ik in eerste instantie niet goed werkend.
+
+De basis van dit onderdeel heb ik zelf uitgezocht en opgebouwd, maar bij het
+koppelen van de knop aan het dynamisch toevoegen van een volledig nieuw verkrijger-blok
+ben ik voor een klein deel geholpen om die logica goed werkend te krijgen.
+
+Bronnen:
+https://chatgpt.com/
+https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+https://developer.mozilla.org/en-US/docs/Web/API/Element/remove
+========================================================= */
 
 if (addPersonBtn && fieldsetsContainer && personList) {
     addPersonBtn.addEventListener("click", () => {
